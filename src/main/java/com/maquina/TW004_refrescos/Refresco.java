@@ -42,7 +42,7 @@ public class Refresco {
 
 	@Override
 	public String toString() {
-		return "Refresco [tipo=" + tipo + ", precio=" + precio + ", cantidad=" + cantidad + "]";
+		return "Refresco [tipo=" + tipo + ", precio=" + precio +"]";
 	}
 
 
