@@ -40,5 +40,10 @@ public class Refresco {
 		return cantidad;
 	}
 
+	@Override
+	public String toString() {
+		return "Refresco [tipo=" + tipo + ", precio=" + precio + ", cantidad=" + cantidad + "]";
+	}
+
 
 }

@@ -5,7 +5,7 @@ public class Maquina {
 
 	//Atributos
 	private int	 cantidadVentas;
-	private int cantidadDinero;
+	private int ganancias;
 	private int dineroCambio;
 	private Refresco refresco;
 	
@@ -17,9 +17,9 @@ public class Maquina {
 		};
 	
 	//Metodos
-	public Maquina(int dineroCambio, int cantidadDinero, Refresco refresco) {
+	public Maquina(int dineroCambio, Refresco refresco) {
 		super();
-		this.cantidadDinero = cantidadDinero;
+		this.ganancias = 0;
 		this.dineroCambio= dineroCambio;
 		
 		//Reconozco el tipo de refresco
@@ -39,12 +39,12 @@ public class Maquina {
 	}
 
 
-	public double getCantidadDinero() {
-		return cantidadDinero;
+	public double getGanancias() {
+		return ganancias;
 	}
 
-	public void setCantidadDinero(int cantidadDinero) {
-		this.cantidadDinero = cantidadDinero;
+	public void setGanancias(int cantidadDinero) {
+		this.ganancias = cantidadDinero;
 	}
 
 	public Refresco getRefresco() {
@@ -54,18 +54,27 @@ public class Maquina {
 	public void setRefresco(Refresco refresco) {
 		this.refresco = refresco;
 	}
-
+	
+	public void crearInformes() {
+		
+		System.out.println("------------------");
+		System.out.println(refresco.toString());
+		System.out.println("Ventas realizadas "+ getCantidadVentas());
+		System.out.println("Ganancias obtenidas "+ getGanancias());
+		System.out.println("------------------");
+	}
+	
 	public void estadoActual() {
-		System.out.println("La maquina tiene "+ numRefrescos()+" refrescos  y "+cantidadDinero+" euros" );
+		System.out.println("La maquina tiene "+ numRefrescos()+" refrescos  y  "+dineroCambio+" euros para cambios" );
 	}
 	
 	public void venta(int dineroIngresado) {
 		
 		if(dineroCambio >= dineroIngresado - refresco.getPrecio()) {
 			
-			if(this.refresco.cantidad > 0 && this.cantidadDinero >0) {
+			if(refresco.cantidad > 0 ) {
 				cantidadVentas += 1;
-				cantidadDinero += refresco.getPrecio();
+				ganancias += refresco.getPrecio();
 				dineroCambio = dineroIngresado - refresco.getPrecio();
 				this.refresco.cantidad -=1;
 			}else {System.out.println("No se puede comprar por falta de Stock");}
